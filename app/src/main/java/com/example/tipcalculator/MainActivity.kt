@@ -9,7 +9,6 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.SeekBar
 import android.widget.TextView
 private const val TAG = "MainActivity"
 
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         tipText = findViewById(R.id.editTip)
         totalTip = findViewById(R.id.totalTip)
         totalBill = findViewById(R.id.totalBill)
-        theButton = findViewById(R.id.theButton)
+        theButton = findViewById(R.id.single)
 
 
         theButton.setOnClickListener {
