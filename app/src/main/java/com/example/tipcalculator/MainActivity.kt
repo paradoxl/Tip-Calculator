@@ -1,5 +1,6 @@
 package com.example.tipcalculator
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -12,38 +13,58 @@ private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var baseBill: EditText
-    private lateinit var tipPercent: SeekBar
+    private lateinit var tipText: TextView
     private lateinit var totalTip: TextView
     private lateinit var totalBill: TextView
     private lateinit var tipView : TextView
 
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         baseBill = findViewById(R.id.enterBaseAmount)
-        tipPercent = findViewById(R.id.EnterTipPercent)
+        tipText = findViewById(R.id.editTip)
         totalTip = findViewById(R.id.totalTip)
         totalBill = findViewById(R.id.totalBill)
-        tipView = findViewById(R.id.TipView)
 
 
-        tipPercent.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Log.i(TAG, "OnProgressChanged $progress")
-                tipView.text = "$progress%"
+
+
+
+
+//        tipPercent.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+//            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+//                Log.i(TAG, "OnProgressChanged $progress")
+//                tipView.text = "$progress%"
+//                computeTotals()
+//
+//            }
+
+//            override fun onStartTrackingTouch(p0: SeekBar?) {
+//
+//            }
+//
+//            override fun onStopTrackingTouch(p0: SeekBar?) {
+//
+//            }
+
+//        })
+        tipText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(S: Editable?) {
+                Log.i(TAG, "afterTextChanged $S")
                 computeTotals()
-
             }
-
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-
-            }
-
         })
+
 
         baseBill.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -68,8 +89,13 @@ class MainActivity : AppCompatActivity() {
             totalBill.text = " "
             return
         }
+        if(tipText.text.isEmpty()){
+            totalTip.text = ""
+            totalBill.text = " "
+            return
+        }
         val base = baseBill.text.toString().toDouble()
-        val tip = tipPercent.progress
+        val tip = tipText.text.toString().toDouble()
 
 
         val tipAmount = base * tip / 100
