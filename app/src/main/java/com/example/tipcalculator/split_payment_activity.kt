@@ -1,6 +1,7 @@
 package com.example.tipcalculator
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -33,7 +34,7 @@ class SplitPaymentActivity : AppCompatActivity() {
         totalTip = findViewById(R.id.totalTip)
         totalBill = findViewById(R.id.totalBill)
         numberOfPeople = findViewById(R.id.numberOfPeople)
-
+        theButton.setBackgroundResource(R.color.purple_700)
         //switches activities
         theButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
