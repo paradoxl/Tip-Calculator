@@ -19,16 +19,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
         android:ems="10"
+        android:gravity="center"
         android:hint="Bill Total"
         android:inputType="number|numberDecimal"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/editTip"
+        app:layout_constraintBottom_toTopOf="@+id/totalTip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/totalTip"
@@ -73,28 +71,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
         android:gravity="center"
-        android:text="Burnt Coffee Studios"
+        android:text="Made with <3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalBill"
         app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/editTip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:hint="Tip Percentage"
-        android:inputType="textPersonName"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/totalTip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
@@ -134,12 +117,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Number Of People"
+        android:inputType="number"
         android:gravity="center"
-        android:hint="Number of People"
-        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/multiple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalBill" />
+
+    <EditText
+        android:id="@+id/editTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Tip Percentage"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/totalTip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterBaseAmount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

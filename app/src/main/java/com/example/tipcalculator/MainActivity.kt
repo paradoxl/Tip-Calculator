@@ -33,30 +33,10 @@ class MainActivity : AppCompatActivity() {
 
 
         theButton.setOnClickListener {
-            val intent = Intent(this, split_payment_activity::class.java)
+            val intent = Intent(this, SplitPaymentActivity::class.java)
             startActivity(intent)
         }
 
-
-
-
-//        tipPercent.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
-//            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-//                Log.i(TAG, "OnProgressChanged $progress")
-//                tipView.text = "$progress%"
-//                computeTotals()
-//
-//            }
-
-//            override fun onStartTrackingTouch(p0: SeekBar?) {
-//
-//            }
-//
-//            override fun onStopTrackingTouch(p0: SeekBar?) {
-//
-//            }
-
-//        })
         tipText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 

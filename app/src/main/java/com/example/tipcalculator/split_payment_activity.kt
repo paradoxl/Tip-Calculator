@@ -3,6 +3,7 @@ package com.example.tipcalculator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -16,13 +17,13 @@ private lateinit var baseBill: EditText
 private lateinit var tipText: TextView
 private lateinit var totalTip: TextView
 private lateinit var totalBill: TextView
-private lateinit var tipView : TextView
+//private lateinit var tipView : TextView
 private lateinit var numberOfPeople: TextView
 
 private const val TAG = "split_payment_activity"
 
 
-class split_payment_activity : AppCompatActivity() {
+class SplitPaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_split_payment)
@@ -50,9 +51,28 @@ class split_payment_activity : AppCompatActivity() {
 
             override fun afterTextChanged(S: Editable?) {
                 Log.i(TAG, "afterTextChanged $S")
-                computeTotals()
+//                computeTotals()
             }
         })
+
+
+
+
+        baseBill.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(S: Editable?) {
+                Log.i(TAG, "afterTextChanged $S")
+//                computeTotals()
+            }
+        })
+
 
         numberOfPeople.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -68,38 +88,23 @@ class split_payment_activity : AppCompatActivity() {
                 computeTotals()
             }
         })
-
-
-        baseBill.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(S: Editable?) {
-                Log.i(TAG, "afterTextChanged $S")
-                computeTotals()
-            }
-        })
     }
 
 
-    private fun computeTotals(){
-        if(numberOfPeople.text.isEmpty()){
-            totalTip.text = "debug"
-            totalBill.text = "debu "
+    private fun computeTotals() {
+        if (numberOfPeople.text.isEmpty()) {
+            totalTip.text = ""
+            totalBill.text = ""
             return
         }
 
-        if(baseBill.text.isEmpty()){
+        if (baseBill.text.isEmpty()) {
             totalTip.text = ""
             totalBill.text = " "
             return
         }
-        if(tipText.text.isEmpty()){
+
+        if (tipText.text.isEmpty()) {
             totalTip.text = ""
             totalBill.text = " "
             return
@@ -107,18 +112,24 @@ class split_payment_activity : AppCompatActivity() {
 
         val base = baseBill.text.toString().toDouble()
         val tip = tipText.text.toString().toDouble()
-        val people = numberOfPeople.toString().toDouble()
+        val people = numberOfPeople.text.toString().toDoubleOrNull()
 
         val tipAmount = base * tip / 100
         val totals = (base + tipAmount)
-//        val final = totals / people
-        //divide total by value given for people
-    // issue has to be something with the input of the number of people. Crash happen
-        // without actually adding it into the calculations
-        totalTip.text = "%.2f".format(tipAmount)
-        totalBill.text = "%.2f".format(totals)
+        println(people)
+        if (people != null){
+            val final = totals / people as Double //here
+            totalTip.text = "%.2f".format(tipAmount)
+            totalBill.text = "%.2f".format(final)
+        }
+        else{     
+            totalBill.text = "Error determining number of people"
+        }
+
+        }
+
     }
 
 
 
-}
+

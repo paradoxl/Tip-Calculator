@@ -10,7 +10,7 @@
         <!--left hand elements-->
         <!-- testing git -->
 
-//
+
     <!-- Right hand elements -->
 
     <EditText
@@ -73,7 +73,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
         android:gravity="center"
-        android:text="Burnt Coffee Studios"
+        android:text="Made with <3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

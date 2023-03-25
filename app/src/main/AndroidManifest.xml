@@ -13,21 +13,21 @@
         android:theme="@style/Theme.TipCalculator"
         tools:targetApi="31">
         <activity
-            android:name=".split_payment_activity"
+            android:name=".SplitPaymentActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".splitPayment"
-            android:exported="false"
-            android:label="@string/title_activity_split_payment"
-            android:theme="@style/Theme.TipCalculator.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+<!--        <activity-->
+<!--            android:name=".splitPayment"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_split_payment"-->
+<!--            android:theme="@style/Theme.TipCalculator.NoActionBar">-->
+<!--            <meta-data-->
+<!--                android:name="android.app.lib_name"-->
+<!--                android:value="" />-->
+<!--        </activity>-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
